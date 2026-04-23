@@ -48,7 +48,7 @@ export async function sendMessage(messages, onProgress) {
   const updateProgress = () => {
     if (onProgress) {
       onProgress(
-        `### 🕵️ Agent 1: Research & Context\n${res1}\n\n---\n\n### ⚖️ Agent 2: Authenticity & Verification\n${res2}\n\n---\n\n### 🤖 Agent 3: AI Generation Analysis\n${res3}`
+        `### 🕵️ Agent 1: Research & Context\n${res1}\n\n---\n\n### ⚖️ Agent 2: Authenticity & Verification\n${res2}\n\n---\n\n### 🤖 Agent 3: AI Generation Analysis\n${res3}`,
       );
     }
   };
@@ -60,7 +60,7 @@ export async function sendMessage(messages, onProgress) {
     "openrouter/free",
     "You are a Research Agent. Your job is to gather detailed factual information, news, and context regarding the user's request. Provide a comprehensive summary of relevant facts. Do NOT output markdown headers larger than h3 (###).",
     messages,
-  ).then(data => {
+  ).then((data) => {
     res1 = data;
     updateProgress();
     return data;
@@ -71,7 +71,7 @@ export async function sendMessage(messages, onProgress) {
     "nvidia/nemotron-3-super-120b-a12b:free",
     "You are a Verification Agent. Your job is to analyze the user's premise for logical fallacies, biases, or inconsistencies. Check the authenticity of the claims made. Provide a skeptical analysis. Do NOT output markdown headers larger than h3 (###).",
     messages,
-  ).then(data => {
+  ).then((data) => {
     res2 = data;
     updateProgress();
     return data;
@@ -82,7 +82,7 @@ export async function sendMessage(messages, onProgress) {
     "liquid/lfm-2.5-1.2b-instruct:free",
     "You are an AI-Detection Agent. Your job is to analyze the prompt and estimate whether the claims or the style of the text sound artificially generated or reflect organic, human writing. Focus on stylistic and structural analysis. Do NOT output markdown headers larger than h3 (###).",
     messages,
-  ).then(data => {
+  ).then((data) => {
     res3 = data;
     updateProgress();
     return data;

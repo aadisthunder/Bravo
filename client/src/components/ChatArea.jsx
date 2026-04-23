@@ -3,13 +3,6 @@ import Message from './Message';
 import TypingIndicator from './TypingIndicator';
 import './ChatArea.css';
 
-const SUGGESTIONS = [
-  { icon: '💻', title: 'Write code', desc: 'Help me build a React component' },
-  { icon: '💡', title: 'Brainstorm ideas', desc: 'Creative project suggestions' },
-  { icon: '📝', title: 'Explain a concept', desc: 'Break down complex topics simply' },
-  { icon: '🐛', title: 'Debug my code', desc: 'Find and fix issues in my code' },
-];
-
 export default function ChatArea({ messages, isLoading, onSendMessage, onToggleSidebar }) {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -56,7 +49,7 @@ export default function ChatArea({ messages, isLoading, onSendMessage, onToggleS
         </button>
         <div className="chat-header-title">
           <div className="header-dot"></div>
-          Gyani AI
+          Vertify
         </div>
         <div style={{ width: 36 }} />
       </div>
@@ -74,24 +67,8 @@ export default function ChatArea({ messages, isLoading, onSendMessage, onToggleS
             </div>
             <h2 className="welcome-title">How can I help you today?</h2>
             <p className="welcome-subtitle">
-              I'm Gyani AI, your intelligent assistant, developed and Trained By Aaditya Parkash.
+              I'm Vertify, your specialized multi-agent research assistant.
             </p>
-            <div className="suggestions-grid">
-              {SUGGESTIONS.map((s, i) => (
-                <button
-                  key={i}
-                  className="suggestion-card"
-                  onClick={() => {
-                    textareaRef.current.value = s.desc;
-                    textareaRef.current.focus();
-                  }}
-                >
-                  <span className="suggestion-icon">{s.icon}</span>
-                  <span className="suggestion-title">{s.title}</span>
-                  <span className="suggestion-desc">{s.desc}</span>
-                </button>
-              ))}
-            </div>
           </div>
         ) : (
           <div className="messages-list">
@@ -110,7 +87,7 @@ export default function ChatArea({ messages, isLoading, onSendMessage, onToggleS
           <div className="input-wrapper">
             <textarea
               ref={textareaRef}
-              placeholder="Message Gyani AI..."
+              placeholder="Message Vertify..."
               rows={1}
               onKeyDown={handleKeyDown}
               onInput={handleInput}
@@ -129,7 +106,7 @@ export default function ChatArea({ messages, isLoading, onSendMessage, onToggleS
               </svg>
             </button>
           </div>
-          <p className="input-hint">Gyani AI can make mistakes. Verify important information.</p>
+          <p className="input-hint">Vertify can make mistakes. Verify important information.</p>
         </form>
       </div>
     </div>

@@ -15,8 +15,8 @@ export default function Sidebar({ chats, activeChatId, onNewChat, onSelectChat, 
               </svg>
             </div>
             <div className="brand-text">
-              <h1>Gyani AI</h1>
-              <span className="brand-tagline">Intelligent Assistant</span>
+              <h1>Vertify</h1>
+              <span className="brand-tagline">Specialized Research Assistant</span>
             </div>
           </div>
           <button className="new-chat-btn" onClick={onNewChat} id="new-chat-btn">
