@@ -50,7 +50,7 @@ export default function App() {
     }
 
     // Add user message
-    const userMessage = { role: 'user', content };
+    const userMessage = { id: generateId(), role: 'user', content };
     const updatedMessages = [...currentMessages, userMessage];
 
     setChats(prev =>
@@ -61,27 +61,62 @@ export default function App() {
 
     setIsLoading(true);
 
-    try {
-      const response = await sendMessage(updatedMessages);
-      const aiMessage = { role: 'assistant', content: response };
+    // Initial placeholder message for the AI
+    const aiMessageId = generateId();
+    setChats(prev =>
+      prev.map(c =>
+        c.id === chatId
+          ? {
+              ...c,
+              messages: [
+                ...updatedMessages,
+                { id: aiMessageId, role: 'assistant', content: "Starting agents..." }
+              ]
+            }
+          : c
+      )
+    );
 
+    try {
+      const response = await sendMessage(updatedMessages, (currentProgress) => {
+        setChats(prev =>
+          prev.map(c =>
+            c.id === chatId
+              ? {
+                  ...c,
+                  messages: c.messages.map(m => 
+                    m.id === aiMessageId ? { ...m, content: currentProgress } : m
+                  )
+                }
+              : c
+          )
+        );
+      });
+      // final update is identical to the last progress
       setChats(prev =>
         prev.map(c =>
           c.id === chatId
-            ? { ...c, messages: [...updatedMessages, aiMessage] }
+            ? {
+                ...c,
+                messages: c.messages.map(m => 
+                  m.id === aiMessageId ? { ...m, content: response } : m
+                )
+              }
             : c
         )
       );
     } catch (error) {
-      const errorMessage = {
-        role: 'assistant',
-        content: `⚠️ **Error:** ${error.message}\n\nPlease try again. If the issue persists, the API may be temporarily unavailable.`,
-      };
+      const errorMessage = `⚠️ **Error:** ${error.message}\n\nPlease try again. If the issue persists, the API may be temporarily unavailable.`;
 
       setChats(prev =>
         prev.map(c =>
           c.id === chatId
-            ? { ...c, messages: [...updatedMessages, errorMessage] }
+            ? {
+                ...c,
+                messages: c.messages.map(m => 
+                  m.id === aiMessageId ? { ...m, content: errorMessage } : m
+                )
+              }
             : c
         )
       );
