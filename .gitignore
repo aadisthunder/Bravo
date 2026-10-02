@@ -1,1 +1,24 @@
+# Dependencies
 node_modules
+
+# Build output
+dist
+build
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS junk
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+.playwright-mcp/
+.freebuff/

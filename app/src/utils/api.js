@@ -1,5 +1,4 @@
-const OPENROUTER_API_KEY =
-  "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";
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY;
 
 async function fetchFromModel(model, systemPrompt, originalMessages) {
   try {

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="triadGrad1" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="triadGrad2" x1="0%" y1="20%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="triadGrad3" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <radialGradient id="triadCoreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="triadGlow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Luminous Core -->
+  <circle cx="256" cy="270" r="90" fill="url(#triadCoreGlow)" />
+
+  <!-- Triad Arm 1: Top Apex descending right -->
+  <path
+    d="M 256 70 
+       C 272 70, 288 80, 298 96 
+       L 426 318 
+       C 438 338, 432 362, 412 374 
+       L 362 402 
+       C 342 414, 318 406, 306 386 
+       L 242 276 
+       L 256 220 
+       L 256 70 Z"
+    fill="url(#triadGrad1)"
+    opacity="0.95"
+  />
+
+  <!-- Triad Arm 2: Bottom Right across to Bottom Left -->
+  <path
+    d="M 412 374 
+       C 400 392, 378 402, 356 402 
+       L 156 402 
+       C 132 402, 114 384, 114 360 
+       L 114 300 
+       C 114 276, 132 258, 156 258 
+       L 282 258 
+       L 330 286 
+       L 412 374 Z"
+    fill="url(#triadGrad2)"
+    opacity="0.9"
+  />
+
+  <!-- Triad Arm 3: Bottom Left ascending to Top Apex -->
+  <path
+    d="M 114 360 
+       C 102 344, 102 322, 114 302 
+       L 214 130 
+       C 226 110, 250 102, 270 114 
+       L 314 140 
+       C 334 152, 342 176, 330 196 
+       L 256 324 
+       L 210 290 
+       L 114 360 Z"
+    fill="url(#triadGrad3)"
+    opacity="0.95"
+  />
+
+  <!-- Central Focus Node / Spark of Wisdom -->
+  <polygon
+    points="256,210 295,280 217,280"
+    fill="#ffffff"
+    opacity="0.92"
+    filter="url(#triadGlow)"
+  />
+</svg>

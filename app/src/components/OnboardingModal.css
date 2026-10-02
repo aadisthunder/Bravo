@@ -1,0 +1,224 @@
+/* Onboarding Modal Overlay */
+.onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeInOverlay 0.2s ease-out;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.onboarding-modal {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: var(--shadow-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text);
+}
+
+@keyframes slideUpModal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.onboarding-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.onboarding-close-btn:hover {
+  color: var(--text);
+  background-color: var(--bg-muted);
+}
+
+.onboarding-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-right: 32px;
+}
+
+.onboarding-badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.onboarding-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.onboarding-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.onboarding-dot.active {
+  width: 22px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.onboarding-dot.completed {
+  background: var(--text-tertiary);
+}
+
+.onboarding-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.onboarding-headline {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 0 6px;
+}
+
+.onboarding-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.onboarding-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.onboarding-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.onboarding-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.onboarding-card-icon {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.onboarding-card-content {
+  flex: 1;
+}
+
+.onboarding-card-title {
+  margin: 0 0 2px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.onboarding-card-desc {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.onboarding-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+}
+
+.onboarding-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.onboarding-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 600px) {
+  .onboarding-modal {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .onboarding-title {
+    font-size: 19px;
+  }
+  .onboarding-card {
+    padding: 10px 12px;
+  }
+}

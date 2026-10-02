@@ -89,8 +89,8 @@ export default function ChatArea({
           </div>
         ) : (
           <div className="messages-list">
-            {messages.map((msg, i) => (
-              <Message key={i} message={msg} />
+            {messages.map((msg) => (
+              <Message key={msg.id} message={msg} />
             ))}
             {isLoading && <TypingIndicator />}
             <div ref={messagesEndRef} />
