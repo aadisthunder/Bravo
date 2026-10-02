@@ -1,84 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
   <defs>
-    <linearGradient id="triadGrad1" x1="20%" y1="0%" x2="80%" y2="100%">
-      <stop offset="0%" stop-color="#a855f7" />
+    <!-- Dark rounded square background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e" />
+      <stop offset="100%" stop-color="#16162a" />
+    </linearGradient>
+    <!-- B letter gradient: purple → indigo-violet -->
+    <linearGradient id="bGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="40%" stop-color="#a855f7" />
       <stop offset="100%" stop-color="#6366f1" />
     </linearGradient>
-    <linearGradient id="triadGrad2" x1="0%" y1="20%" x2="100%" y2="80%">
-      <stop offset="0%" stop-color="#6366f1" />
-      <stop offset="100%" stop-color="#38bdf8" />
-    </linearGradient>
-    <linearGradient id="triadGrad3" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#c084fc" />
-      <stop offset="100%" stop-color="#7c3aed" />
-    </linearGradient>
-    <radialGradient id="triadCoreGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#e0e7ff" stop-opacity="0.9" />
-      <stop offset="50%" stop-color="#a855f7" stop-opacity="0.4" />
+    <!-- Inner glow gradient for the letter B -->
+    <radialGradient id="bGlow" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#e879f9" stop-opacity="0.6" />
+      <stop offset="60%" stop-color="#a855f7" stop-opacity="0.2" />
       <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
     </radialGradient>
-    <filter id="triadGlow" x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur stdDeviation="16" result="blur" />
+    <!-- Soft glow filter -->
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+    <!-- Clip for rounded square -->
+    <clipPath id="roundedRect">
+      <rect x="0" y="0" width="512" height="512" rx="110" ry="110" />
+    </clipPath>
   </defs>
 
-  <!-- Luminous Core -->
-  <circle cx="256" cy="270" r="90" fill="url(#triadCoreGlow)" />
+  <!-- Background -->
+  <rect x="0" y="0" width="512" height="512" rx="110" ry="110" fill="url(#bgGrad)" />
 
-  <!-- Triad Arm 1: Top Apex descending right -->
+  <!-- Glow halo behind B -->
+  <ellipse cx="250" cy="256" rx="140" ry="150" fill="url(#bGlow)" opacity="0.7" />
+
+  <!-- Letter B — thick, bold, rounded strokes using path -->
+  <g filter="url(#glowFilter)">
+    <path
+      d="
+        M 142 100
+        L 142 412
+        L 278 412
+        C 350 412, 390 372, 390 312
+        C 390 275, 370 250, 340 238
+        C 366 226, 382 203, 382 170
+        C 382 128, 346 100, 278 100
+        Z
+
+        M 200 162
+        L 268 162
+        C 308 162, 326 178, 326 202
+        C 326 226, 308 244, 268 244
+        L 200 244
+        Z
+
+        M 200 304
+        L 200 350
+        L 278 350
+        C 322 350, 334 330, 334 328
+        C 334 306, 316 304, 278 304
+        Z
+      "
+      fill="url(#bGrad)"
+      fill-rule="evenodd"
+      opacity="0.96"
+    />
+  </g>
+
+  <!-- Subtle inner highlight on B -->
   <path
-    d="M 256 70 
-       C 272 70, 288 80, 298 96 
-       L 426 318 
-       C 438 338, 432 362, 412 374 
-       L 362 402 
-       C 342 414, 318 406, 306 386 
-       L 242 276 
-       L 256 220 
-       L 256 70 Z"
-    fill="url(#triadGrad1)"
-    opacity="0.95"
-  />
-
-  <!-- Triad Arm 2: Bottom Right across to Bottom Left -->
-  <path
-    d="M 412 374 
-       C 400 392, 378 402, 356 402 
-       L 156 402 
-       C 132 402, 114 384, 114 360 
-       L 114 300 
-       C 114 276, 132 258, 156 258 
-       L 282 258 
-       L 330 286 
-       L 412 374 Z"
-    fill="url(#triadGrad2)"
-    opacity="0.9"
-  />
-
-  <!-- Triad Arm 3: Bottom Left ascending to Top Apex -->
-  <path
-    d="M 114 360 
-       C 102 344, 102 322, 114 302 
-       L 214 130 
-       C 226 110, 250 102, 270 114 
-       L 314 140 
-       C 334 152, 342 176, 330 196 
-       L 256 324 
-       L 210 290 
-       L 114 360 Z"
-    fill="url(#triadGrad3)"
-    opacity="0.95"
-  />
-
-  <!-- Central Focus Node / Spark of Wisdom -->
-  <polygon
-    points="256,210 295,280 217,280"
-    fill="#ffffff"
-    opacity="0.92"
-    filter="url(#triadGlow)"
+    d="
+      M 152 110
+      L 152 240
+      L 268 240
+      C 295 240, 316 230, 316 202
+      C 316 174, 295 162, 268 162
+      L 210 162
+      L 210 110
+      Z
+    "
+    fill="white"
+    opacity="0.08"
+    fill-rule="evenodd"
   />
 </svg>

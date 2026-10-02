@@ -22,3 +22,6 @@ npm-debug.log*
 *.swp
 .playwright-mcp/
 .freebuff/
+
+# Firebase deploy cache
+.firebase/
