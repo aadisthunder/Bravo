@@ -113,9 +113,7 @@ export default function ChatView({
         {isEmpty ? (
           <div className="welcome">
             <div className="welcome-mark">
-              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M4 19 L9 5 L12 13 L15 5 L20 19" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <img src="/logo.svg" alt="Bravo" className="welcome-logo-img" />
             </div>
             <h1 className="welcome-title">What can I do for you?</h1>
             <p className="welcome-sub">

@@ -22,9 +22,7 @@ export default function Sidebar({
         {/* Brand */}
         <div className="sidebar-brand">
           <div className="brand-mark">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2">
-              <path d="M4 19 L9 5 L12 13 L15 5 L20 19" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <img src="/logo.svg" alt="Bravo" className="brand-logo-img" />
           </div>
           <div className="brand-text">
             <span className="brand-name">{APP_NAME}</span>

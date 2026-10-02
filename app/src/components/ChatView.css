@@ -57,15 +57,21 @@
 }
 
 .welcome-mark {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: var(--accent);
-  color: var(--accent-text);
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+}
+
+.welcome-logo-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: block;
 }
 
 .welcome-title {
